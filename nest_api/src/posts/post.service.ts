@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Post } from './post.entity';
-
+import { Post } from './post.entity'; // Importa a entidade Post
 
 @Injectable()
 export class PostService {
+  // Dados simulados de posts (poderiam vir de um banco de dados real)
   private posts: Post[] = [
     {
       id: 1,
@@ -50,17 +50,22 @@ export class PostService {
       title: 'Nissan: Sol Nascente, Tecnologia de Vanguarda',
       body: 'Em 1933, em Yokohama, no Japão, a fusão de várias empresas japonesas deu origem à Nissan. Seus carros são mundialmente reconhecidos por sua confiabilidade, economia e tecnologia inovadora. O "Sol Nascente", símbolo da marca, representa o Japão e a busca incessante pela excelência. A Nissan se tornou uma das maiores montadoras do mundo, com presença em diversos países e uma gama completa de modelos que atendem às mais variadas necessidades dos consumidores.',
     },
+    // Outros objetos de post similares...
   ];
 
+  // Método para retornar todos os posts
   findAll(): Post[] {
     return this.posts;
   }
 
+  // Método para encontrar um post específico por ID
   findOne(id: number): Post {
+    // Busca o post no array usando o método find do JavaScript
     const post = this.posts.find(post => post.id === id);
+    // Lança uma exceção NotFoundException se o post não for encontrado
     if (!post) {
       throw new NotFoundException(`Postagem com o ID ${id} não encontrada!`);
     }
-    return post;
+    return post; // Retorna o post encontrado
   }
 }
