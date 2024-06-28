@@ -29,7 +29,7 @@ abstract class _LoginStore with Store {
     if (email.contains('@') && password.length >= 6) {
       isLoggedIn = true;
     } else {
-      throw Exception('Invalid credentials');
+      throw Exception('Credenciais Inválidas');
     }
   }
 }
