@@ -21,16 +21,13 @@ A estrutura do projeto é organizada seguindo os princípios da Arquitetura Limp
 2. **Tela Inicial:**
    - AppBar com o título "Bem-vindo!".
    - Botão "Logout" na AppBar que redireciona o usuário de volta para a tela de login.
+   - Campo para realizar a filtragem por Marca.
    - Lista de posts obtidos da API, exibindo título e conteúdo.
 
 ### API NestJS
 
 1. **Gerenciamento de Posts:**
    - Endpoint para obter todos os posts (`GET /posts`).
-   - Endpoint para obter um post específico por ID (`GET /posts/:id`).
-   - Endpoint para criar um novo post (`POST /posts`).
-   - Endpoint para atualizar um post existente (`PUT /posts/:id`).
-   - Endpoint para deletar um post (`DELETE /posts/:id`).
 
 ## Pré-requisitos
 
@@ -43,8 +40,8 @@ A estrutura do projeto é organizada seguindo os princípios da Arquitetura Limp
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/mgdonato23/postageapp.git
-   cd postageapp/nest-api
+   git clone https://github.com/mgdonato23/brand_app.git
+   cd brand_app/nest-api
 
 2. **Instale as dependências:**
 
@@ -60,14 +57,18 @@ A API estará disponível em http://localhost:3000. Porém, atente-se aos coment
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/mgdonato23/postageapp.git
-   cd postageapp/flutter_app
+   git clone https://github.com/mgdonato23/brand_app.git
+   cd brand_app/flutter_app
 
-2. **Instale as dependências:**
+2. **Instale as dependências do Flutter:**
 
 flutter pub get
 
-3. **Inicie o servidor:**
+3. **Gere as Stores:**
+
+flutter packages pub run build_runner build
+
+4. **Inicie o servidor:**
 
 flutter run
 
