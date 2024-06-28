@@ -15,16 +15,16 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   @override
   Future<List<PostModel>> getPosts() async {
     try {
-      final response = await client.get(Uri.parse('http://192.168.0.152:3000/posts')); //TODO ALTERAR IP PARA O IP DA SUA MÁQUINA
+      final response = await client.get(Uri.parse(
+          'http://192.168.X.XXX:3000/posts')); //TODO ALTERAR IP PARA O IP DA SUA MÁQUINA
       if (response.statusCode == 200) {
         List jsonResponse = json.decode(response.body);
         return jsonResponse.map((post) => PostModel.fromJson(post)).toList();
-      } else{
+      } else {
         return [];
       }
     } catch (e) {
-      print(e);
-      throw Exception('Failed to load posts');
+      throw Exception('Falha ao buscar os posts!\nERRO: $e');
     }
   }
 }
