@@ -2,11 +2,11 @@
 
 ## Descrição
 
-Este projeto consiste em uma aplicação Flutter integrada com um backend construído com NestJS. A aplicação Flutter apresenta uma tela de login, uma tela inicial que exibe uma lista de posts e uma funcionalidade de logout. O backend NestJS fornece uma API para gerenciar os posts.
+Este projeto consiste em uma aplicação Flutter integrada com um backend construído com NestJS. A aplicação Flutter apresenta uma tela de login, uma tela inicial que exibe uma lista de posts, com uma funcionalidade de logout e a possibilidade de filtrar as marcas. O backend NestJS fornece uma API para gerenciar os posts.
 
 ## Estrutura do Projeto
 
-A estrutura do projeto é organizada seguindo os princípios da Arquitetura Limpa e utilizando MobX para gerenciamento de estado na aplicação Flutter.
+A estrutura do projeto é organizada seguindo os princípios da Arquitetura e Código Limpo, utilizando MobX para gerenciamento de estado na aplicação Flutter.
 
 ## Funcionalidades
 
@@ -66,7 +66,7 @@ flutter pub get
 
 3. **Gere as Stores:**
 
-flutter packages pub run build_runner build
+dart run build_runner build
 
 4. **Inicie o servidor:**
 
