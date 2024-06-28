@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/presentation/pages/home_page.dart';
-import 'package:flutter_app/presentation/stores/login_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
+// Página de login da aplicação
 class LoginPage extends StatelessWidget {
-  final LoginStore loginStore = LoginStore();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // Chave global para o formulário de login
 
-  LoginPage({super.key});
+  LoginPage({super.key}); // Construtor da classe LoginPage
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +14,17 @@ class LoginPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 60),
         child: Form(
-          key: _formKey,
+          key: _formKey, // Define a chave global para o formulário
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text('LOGIN', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 20),
+              const Text(
+                'LOGIN',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ), // Título da página de login
+              const SizedBox(height: 20), // Espaçamento entre elementos
               Observer(
                 builder: (_) => TextFormField(
-                  onChanged: loginStore.setEmail,
                   decoration: const InputDecoration(
                     labelText: 'E-mail: ',
                     border: OutlineInputBorder(),
@@ -36,15 +37,14 @@ class LoginPage extends StatelessWidget {
                   },
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 10), // Espaçamento entre elementos
               Observer(
                 builder: (_) => TextFormField(
-                  onChanged: loginStore.setPassword,
                   decoration: const InputDecoration(
                     labelText: 'Senha: ',
                     border: OutlineInputBorder(),
                   ),
-                  obscureText: true,
+                  obscureText: true, // Esconde o texto da senha
                   validator: (value) {
                     if (value == null || value.length < 6) {
                       return 'Senha deve ter pelo menos 6 caracteres';
@@ -53,22 +53,19 @@ class LoginPage extends StatelessWidget {
                   },
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 20), // Espaçamento entre elementos
               Observer(
                 builder: (_) => ElevatedButton(
                   onPressed: () async {
-                    if (_formKey.currentState?.validate() ?? false) {
-                      await loginStore.login();
-                      if (loginStore.isLoggedIn) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage()),
-                        );
-                      }
+                    if (_formKey.currentState?.validate() ?? false) {// Valida o formulário antes de tentar fazer login
+                      Navigator.pushReplacement(// Navega para a HomePage se o login for bem-sucedido
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                      );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text('Credenciais inválidas!'),
+                          content: Text('Credenciais inválidas!'), // Exibe um snackbar se as credenciais forem inválidas
                         ),
                       );
                     }
